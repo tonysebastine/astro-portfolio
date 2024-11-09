@@ -4,6 +4,7 @@ import netlify from "@astrojs/netlify";
 import robotsTxt from "astro-robots-txt";
 import UnoCSS from "@unocss/astro";
 import icon from "astro-icon";
+import cloudflarePages from "@astrojs/cloudflare-pages";
 
 import solidJs from "@astrojs/solid-js";
 import { remarkReadingTime } from "./src/lib/remark-reading-time.mjs";
@@ -29,8 +30,8 @@ export default defineConfig({
   markdown: {
     remarkPlugins: [remarkReadingTime],
   },
-  output: "server",
-  adapter: netlify({ edgeMiddleware: true }),
+ output: "server",
+  adapter: cloudflarePages(),  // Change to Cloudflare Pages adapter
   vite: {
     assetsInclude: "**/*.riv",
   },
